@@ -236,3 +236,4 @@ while True:
             pygame.quit()
             quit()
     pygame.display.update()
+    # This is new statemetn 
