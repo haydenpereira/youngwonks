@@ -1,0 +1,59 @@
+import random
+x = 3
+y = 3
+apples = 0
+print ('use your arrow keys to get to the apple')
+goal = int(input('how many apples do you want to try to get '))
+s.set_pixel(x,y,green)
+apple = (random.randint(0,7),random.randint(0,7))
+s.set_pixel(apple[0],apple[1],red)
+while True:
+  if x == apple[0] and y == apple[1]:
+    apple = (random.randint(0,7),random.randint(0,7))
+    apples += 1
+    if apples == goal:
+      print ('YOU WON!!!!')
+      break
+    s.set_pixel(apple[0],apple[1],red)
+  for event in s.stick.get_events():
+    if event.action == 'pressed':
+      if event.direction == 'right':
+        s.clear()
+        s.set_pixel(apple[0],apple[1],red)
+        x += 1
+        if x >= 8:
+          s.clear()
+          print ('You lost')
+          print ('you got',apples,'apples!')
+          break
+        s.set_pixel(x,y,green)
+      elif event.direction == 'left':
+        s.clear()
+        s.set_pixel(apple[0],apple[1],red)
+        x -= 1
+        if x <= -1:
+          s.clear(red)
+          print ('You lost')
+          print ('you got',apples,'apples!')
+          break
+        s.set_pixel(x,y,green)
+      elif event.direction == 'up':
+        s.clear()
+        s.set_pixel(apple[0],apple[1],red)
+        y -= 1
+        if y <= -1:
+          s.clear(red)
+          print ('You lost')
+          print ('you got',apples,'apples!')
+          break
+        s.set_pixel(x,y,green)
+      elif event.direction == 'down':
+        s.clear()
+        s.set_pixel(apple[0],apple[1],red)
+        y += 1
+        if y >= 8:
+          s.clear(red)
+          print ('You lost')
+          print ('you got',apples,'apples!')
+          break
+        s.set_pixel(x,y,green)
