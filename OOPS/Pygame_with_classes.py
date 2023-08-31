@@ -215,7 +215,7 @@ class Circle:
         self.speedx = 0
         self.speedy = 0
     def draw(self):
-        pygame.draw.circle(screen,self.color,(self.x,self.y),Circle.radius)
+        pygame.draw.circle(screen,self.color,(self.x,self.y),self.radius)
     def move(self):
         if self.color == red:
             self.speedy = 0
@@ -225,12 +225,18 @@ class Circle:
             self.speedy = 2
         self.x += self.speedx
         self.y += self.speedy
+        if self.x >= 600 or self.x <= 0:
+            self.speedx = -self.speedx
+        if self.y >= 600 or self.y <= 0:
+            self.speedy = -self.speedy
 for i in range(0,20,1):
-    object1 = Circle((random.randint(0,600),random.randint(0,600)),(random.randint(0,600),random.randint(0,600)))
+    object1 = Circle(random.randint(0,600),random.randint(0,600))
     object_list.append(object1)
 while True:
+    screen.fill((0,0,0))
     for i in object_list:
-        
+        i.draw()
+        i.move()
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
