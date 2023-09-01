@@ -212,25 +212,30 @@ class Circle:
         self.x = x
         self.y = y
         self.color = random.choice([red,blue])
-        self.speedx = 0
-        self.speedy = 0
+        self.speedx = 2
+        self.speedy = 2
     def draw(self):
         pygame.draw.circle(screen,self.color,(self.x,self.y),self.radius)
     def move(self):
         if self.color == red:
             self.speedy = 0
-            self.speedx = 2
+        elif self.color == blue:
+            self.speedx = 0
+        self.x += self.speedx
+        self.y += self.speedy
+        if self.x >= 570 or self.x <= 30:
+            self.speedx = -self.speedx
+        elif self.y >= 570 or self.y <= 30:
+            self.speedy = -self.speedy
+    def change(self):
         if self.color == blue:
             self.speedx = 0
             self.speedy = 2
-        self.x += self.speedx
-        self.y += self.speedy
-        if self.x >= 600 or self.x <= 0:
-            self.speedx = -self.speedx
-        if self.y >= 600 or self.y <= 0:
-            self.speedy = -self.speedy
+        elif self.color == red:
+            self.speedx = 2
+            self.speedy = 0
 for i in range(0,20,1):
-    object1 = Circle(random.randint(0,600),random.randint(0,600))
+    object1 = Circle(random.randint(50,550),random.randint(50,550))
     object_list.append(object1)
 while True:
     screen.fill((0,0,0))
@@ -238,6 +243,15 @@ while True:
         i.draw()
         i.move()
     for event in pygame.event.get():
+        if event.type == MOUSEBUTTONDOWN:
+            for i in object_list:
+                if event.pos[0] in range(i.x - 30,i.x + 30) and event.pos[1] in range(i.y - 30, i.y + 30):
+                    if i.color == red:
+                        i.color = blue
+                    elif i.color == blue:
+                        i.color = red
+                i.change()
+                i.move()
         if event.type == QUIT:
             pygame.quit()
             quit()
