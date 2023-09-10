@@ -414,15 +414,40 @@ for i in range(0,len(name),1):
     new_info[name[i]] = age[i]
 print(new_info)'''
 
-count = 0
+'''count = 0
 name = input('what is your name? ')
 friend_name = input('what is your friends name? ')
 while count != len(name):
     if name[count] in friend_name:
         print(name[count])
-    count += 1
-    
+    count += 1'''
 
+import random   
+import pygame
+from pygame.locals import *
+pygame.init()
+screen = pygame.display.set_mode((600,600))
+red = (255,0,0)
+green = (0,255,0)
+blue = (0,0,255)
+white = (255,255,255)
+black = (0,0,0)
+colors = [red,white,blue,green,black]
+background = black
+rectangle = white
+while True:
+    screen.fill(background)
+    pygame.draw.rect(screen,rectangle,(225,300,150,50))
+    for event in pygame.event.get():
+        if event.type == MOUSEBUTTONDOWN:
+            if event.pos[0] in range(225,375) and event.pos[1] in range(300,350):
+                rectangle = random.choice(colors)
+            else:
+                background = random.choice(colors)
+        if event.type == QUIT:
+            pygame.quit()
+            quit()
+    pygame.display.update()
 
 
 
