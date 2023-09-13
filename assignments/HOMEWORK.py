@@ -449,18 +449,39 @@ while True:
             quit()
     pygame.display.update()'''
 
-number = 1
+'''number = 1
 rows = 0 
-columns = 5
-while rows < 4:
-    while columns < 1:
+columns = 6
+num = 0
+while rows < 5:
+    while columns > 1:
         print(number, end = ' ')
         number += 1
         columns -= 1
     print()
     rows += 1
+    columns -= 1'''
 
+'''import random
+numbers = []
+while True:
+    num = random.randint(10,20)
+    if num in numbers:
+        pass
+    else:
+        numbers.append(num)
+    if len(numbers) == 10:
+        break
+print(numbers)'''
 
+numbers = [[13, 15, 17, 19],
+           [21, 16, 23],
+           [73, 79, 51, 35]]
+for i in numbers:
+    for x in i:
+        if x % 2 != 0:
+            numbers[numbers.index(i)][i.index(x)] = x * x
+print(numbers)
 
 
 
