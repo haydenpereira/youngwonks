@@ -422,7 +422,7 @@ while count != len(name):
         print(name[count])
     count += 1'''
 
-import random   
+'''import random   
 import pygame
 from pygame.locals import *
 pygame.init()
@@ -447,9 +447,18 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             quit()
-    pygame.display.update()
+    pygame.display.update()'''
 
-
+number = 1
+rows = 0 
+columns = 5
+while rows < 4:
+    while columns < 1:
+        print(number, end = ' ')
+        number += 1
+        columns -= 1
+    print()
+    rows += 1
 
 
 
