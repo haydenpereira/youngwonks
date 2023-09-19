@@ -449,16 +449,17 @@ while True:
             quit()
     pygame.display.update()'''
 
-'''number = 1
-rows = 0 
-columns = 6
+'''import time
+number = 1
+rows = 1 
+columns = 5
 num = 0
 while rows < 5:
     while columns > 1:
         print(number, end = ' ')
         number += 1
-        columns -= 1
     print()
+    time.sleep(1)
     rows += 1
     columns -= 1'''
 
@@ -474,23 +475,83 @@ while True:
         break
 print(numbers)'''
 
-numbers = [[13, 15, 17, 19],
+'''numbers = [[13, 15, 17, 19],
            [21, 16, 23],
            [73, 79, 51, 35]]
 for i in numbers:
     for x in i:
         if x % 2 != 0:
             numbers[numbers.index(i)][i.index(x)] = x * x
-print(numbers)
+print(numbers)'''
 
+'''num = 1
+columns = 5
+for r in range(0,3,1):
+    for c in range(0,columns,1):
+        if num == 12:
+            
+            print()
+            print(num)
+            break
+        else:
+            print(num,end = ' ')
+        num += 1
+    print()
+    columns -= 1'''
 
+'''r = 1
+num = 1 
+column2 = 5
+column = 5
+while r <= 3:
+    while column >= 1:
+        if num == 12:
+            print()
+            print(num)
+            break
+        else:
+            print(num,end = ' ')
+        column -= 1
+        num += 1
+    print()
+    column2 -= 1
+    column = column2
+    r += 1'''
 
+# num = 0
+# m = open('/Users/haydenpereira/Documents/GitHub/youngwonks/assignments/Coding.txt','r')
+# t = m.read()
+# t = t.split()                               
+# for i in t:
+#     if len(i) == 2:
+#         num += 1
+# print(num)
 
-
-
-
-
-
+import pygame
+from pygame.locals import *
+pygame.init()
+screen = pygame.display.set_mode((600,600))
+red = (255,0,0)
+green = (0,255,0)
+blue = (0,0,255)
+white = (255,255,255)
+def text(msg,x,y,color,size):
+    font_object = pygame.font.SysFont('Lobster',size)
+    message_object = font_object.render(msg,False,color)
+    screen.blit(message_object,(x,y))
+color_switch = 'red'
+x = 0
+while True:
+    screen.fill((0,0,0))
+    text('YoungWonks Hackathon coming next month!',x,300,green,40)
+    x += 2
+    if x >= 600:
+        x = -600
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            quit()
+    pygame.display.update()
 
 
 
