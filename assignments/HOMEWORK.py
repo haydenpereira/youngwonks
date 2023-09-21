@@ -539,7 +539,6 @@ def text(msg,x,y,color,size):
     font_object = pygame.font.SysFont('Lobster',size)
     message_object = font_object.render(msg,False,color)
     screen.blit(message_object,(x,y))
-color_switch = 'red'
 x = 0
 while True:
     screen.fill((0,0,0))
